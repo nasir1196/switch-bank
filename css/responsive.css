@@ -1,0 +1,11 @@
+@media(max-width:768px){
+    .status {
+        margin: 0.5rem 1rem;
+    }
+    .deposit-area, .withdraw-area {
+        margin: 0.4rem;
+    }
+    body {
+        padding: 3rem;
+    }
+}
