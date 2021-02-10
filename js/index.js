@@ -17,6 +17,7 @@ function addDepositAmount() {
     const depositNumber = parseFloat(depositAmount);
     if (depositNumber < 0) {
         alert('Deposit Amount Cannot be negative!')
+        document.getElementById('depositAmount').value = "";
     }
     else {
         updateSpanText("currentDeposit", depositNumber);
@@ -47,6 +48,7 @@ function withdrawHandler() {
     const withdrawAmount = getInputNumber('withdrawAmount');
     if (withdrawAmount < 0) {
         alert('Withdraw Amount Cannot be negative');
+        document.getElementById('withdrawAmount').value = "";
     } else {
         updateSpanText('currentWithdraw', withdrawAmount);
         updateSpanText('currentBalance', -1 * withdrawAmount)
