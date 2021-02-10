@@ -5,8 +5,11 @@ function forLoginButton() {
     const transactionArea = document.getElementById('transaction-area');
     transactionArea.style.display = 'block';
 }
+
+
 const loginButton = document.getElementById('login');
 loginButton.addEventListener('click', forLoginButton);
+
 
 //Deposit click handler
 function addDepositAmount() {
@@ -15,12 +18,15 @@ function addDepositAmount() {
     if (depositNumber < 0) {
         alert('Deposit Amount Cannot be negative!')
     }
+    else {
+        updateSpanText("currentDeposit", depositNumber);
+        updateSpanText("currentBalance", depositNumber);
 
-    updateSpanText("currentDeposit", depositNumber);
-    updateSpanText("currentBalance", depositNumber);
-
-    document.getElementById('depositAmount').value = "";
+        document.getElementById('depositAmount').value = "";
+    }
 }
+
+
 function updateSpanText(id, addedNumber) {
     const current = document.getElementById(id).innerText;
     const currentNumber = parseFloat(current);
@@ -36,13 +42,19 @@ addDeposit.addEventListener('click', addDepositAmount);
 const addWithdrawButton = document.getElementById('addWithdraw');
 addWithdrawButton.addEventListener('click', withdrawHandler);
 
+
 function withdrawHandler() {
     const withdrawAmount = getInputNumber('withdrawAmount');
-    updateSpanText('currentWithdraw', withdrawAmount);
-    updateSpanText('currentBalance', -1 * withdrawAmount)
-    document.getElementById('withdrawAmount').value = "";
-
+    if (withdrawAmount < 0) {
+        alert('Withdraw Amount Cannot be negative');
+    } else {
+        updateSpanText('currentWithdraw', withdrawAmount);
+        updateSpanText('currentBalance', -1 * withdrawAmount)
+        document.getElementById('withdrawAmount').value = "";
+    }
 }
+
+
 function getInputNumber(id) {
     const withdrawAmount = document.getElementById(id).value;
     const amountNumber = parseFloat(withdrawAmount);
