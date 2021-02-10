@@ -12,6 +12,9 @@ loginButton.addEventListener('click', forLoginButton);
 function addDepositAmount() {
     const depositAmount = document.getElementById('depositAmount').value;
     const depositNumber = parseFloat(depositAmount);
+    if (depositNumber < 0) {
+        alert('Deposit Amount Cannot be negative!')
+    }
 
     updateSpanText("currentDeposit", depositNumber);
     updateSpanText("currentBalance", depositNumber);
